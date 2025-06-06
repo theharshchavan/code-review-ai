@@ -31,8 +31,10 @@ function App() {
           <div className="code">
             <Editor
               value={code}
-              onValueChange={code => setCode(code)}
-              highlight={code => prism.highlight(code, prism.languages.javascript, "javascript")}
+              onValueChange={(code) => setCode(code)}
+              highlight={(code) =>
+                prism.highlight(code, prism.languages.javascript, "javascript")
+              }
               padding={10}
               style={{
                 fontFamily: '"Fira code", "Fira Mono", monospace',
@@ -40,24 +42,24 @@ function App() {
                 border: "1px solid #ddd",
                 borderRadius: "5px",
                 height: "100%",
-                width: "100%"
+                width: "100%",
               }}
             />
           </div>
-          <div
-            onClick={reviewCode}
-            className="review">Review</div>
+          <div onClick={reviewCode} className="review">
+            Review
+          </div>
         </div>
         <div className="right">
-          {review ? <Markdown
-
-            rehypePlugins={[ rehypeHighlight ]}
-
-          >{review}</Markdown> : <div className="placeholder">Click Review to get AI feedback</div>}
+          {review ? (
+            <Markdown rehypePlugins={[rehypeHighlight]}>{review}</Markdown>
+          ) : (
+            <div className="placeholder">Click Review to get AI feedback</div>
+          )}
         </div>
       </main>
     </>
-  )
+  );
 }
 
 
