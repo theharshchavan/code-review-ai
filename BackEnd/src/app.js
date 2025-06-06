@@ -6,12 +6,14 @@ dotenv.config()
 
 const app = express()
 
-app.use(cors(
-    {
-        origin: process.env.FRONTEND_URL,
-        methods: ['GET', 'POST'],
-    }
-))
+const corsOptions = {
+  origin: process.env.FRONTEND_URL,
+  methods: ['GET', 'POST'],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 
 app.use(express.json())
